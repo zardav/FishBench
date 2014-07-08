@@ -219,7 +219,7 @@
             this.terminateButton.UseVisualStyleBackColor = true;
             this.terminateButton.Click += new System.EventHandler(this.terminateButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +241,7 @@
             this.Controls.Add(this.baseLabel);
             this.Controls.Add(this.stockfishLocationText);
             this.Controls.Add(this.baseLocationText);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "FishBench";
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).EndInit();
             this.ResumeLayout(false);
