@@ -45,6 +45,13 @@
             this.stockfishAverageText = new System.Windows.Forms.TextBox();
             this.baseAverageText = new System.Windows.Forms.TextBox();
             this.terminateButton = new System.Windows.Forms.Button();
+            this.labelAvg = new System.Windows.Forms.Label();
+            this.stockfishStdevText = new System.Windows.Forms.TextBox();
+            this.baseStdevText = new System.Windows.Forms.TextBox();
+            this.labelStdev = new System.Windows.Forms.Label();
+            this.labelDiff = new System.Windows.Forms.Label();
+            this.diffAverageText = new System.Windows.Forms.TextBox();
+            this.diffStdevText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +95,7 @@
             // 
             // baseBrowseButton
             // 
+            this.baseBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.baseBrowseButton.Location = new System.Drawing.Point(410, 12);
             this.baseBrowseButton.Name = "baseBrowseButton";
             this.baseBrowseButton.Size = new System.Drawing.Size(27, 20);
@@ -98,6 +106,7 @@
             // 
             // stockfishBrowseButton
             // 
+            this.stockfishBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stockfishBrowseButton.Location = new System.Drawing.Point(409, 38);
             this.stockfishBrowseButton.Name = "stockfishBrowseButton";
             this.stockfishBrowseButton.Size = new System.Drawing.Size(27, 20);
@@ -177,24 +186,24 @@
             // baseAverLabel
             // 
             this.baseAverLabel.AutoSize = true;
-            this.baseAverLabel.Location = new System.Drawing.Point(12, 152);
+            this.baseAverLabel.Location = new System.Drawing.Point(12, 173);
             this.baseAverLabel.Name = "baseAverLabel";
-            this.baseAverLabel.Size = new System.Drawing.Size(102, 13);
+            this.baseAverLabel.Size = new System.Drawing.Size(34, 13);
             this.baseAverLabel.TabIndex = 1;
-            this.baseAverLabel.Text = "Base average (nps):";
+            this.baseAverLabel.Text = "Base:";
             // 
             // stockfishAverLabel
             // 
             this.stockfishAverLabel.AutoSize = true;
-            this.stockfishAverLabel.Location = new System.Drawing.Point(12, 178);
+            this.stockfishAverLabel.Location = new System.Drawing.Point(12, 199);
             this.stockfishAverLabel.Name = "stockfishAverLabel";
-            this.stockfishAverLabel.Size = new System.Drawing.Size(122, 13);
+            this.stockfishAverLabel.Size = new System.Drawing.Size(54, 13);
             this.stockfishAverLabel.TabIndex = 1;
-            this.stockfishAverLabel.Text = "Stockfish average (nps):";
+            this.stockfishAverLabel.Text = "Stockfish:";
             // 
             // stockfishAverageText
             // 
-            this.stockfishAverageText.Location = new System.Drawing.Point(136, 175);
+            this.stockfishAverageText.Location = new System.Drawing.Point(113, 196);
             this.stockfishAverageText.Name = "stockfishAverageText";
             this.stockfishAverageText.ReadOnly = true;
             this.stockfishAverageText.Size = new System.Drawing.Size(100, 20);
@@ -202,7 +211,7 @@
             // 
             // baseAverageText
             // 
-            this.baseAverageText.Location = new System.Drawing.Point(136, 149);
+            this.baseAverageText.Location = new System.Drawing.Point(113, 170);
             this.baseAverageText.Name = "baseAverageText";
             this.baseAverageText.ReadOnly = true;
             this.baseAverageText.Size = new System.Drawing.Size(100, 20);
@@ -219,11 +228,76 @@
             this.terminateButton.UseVisualStyleBackColor = true;
             this.terminateButton.Click += new System.EventHandler(this.terminateButton_Click);
             // 
+            // labelAvg
+            // 
+            this.labelAvg.AutoSize = true;
+            this.labelAvg.Location = new System.Drawing.Point(113, 151);
+            this.labelAvg.Name = "labelAvg";
+            this.labelAvg.Size = new System.Drawing.Size(53, 13);
+            this.labelAvg.TabIndex = 8;
+            this.labelAvg.Text = "Avergage";
+            // 
+            // stockfishStdevText
+            // 
+            this.stockfishStdevText.Location = new System.Drawing.Point(219, 196);
+            this.stockfishStdevText.Name = "stockfishStdevText";
+            this.stockfishStdevText.ReadOnly = true;
+            this.stockfishStdevText.Size = new System.Drawing.Size(100, 20);
+            this.stockfishStdevText.TabIndex = 7;
+            // 
+            // baseStdevText
+            // 
+            this.baseStdevText.Location = new System.Drawing.Point(219, 170);
+            this.baseStdevText.Name = "baseStdevText";
+            this.baseStdevText.ReadOnly = true;
+            this.baseStdevText.Size = new System.Drawing.Size(100, 20);
+            this.baseStdevText.TabIndex = 7;
+            // 
+            // labelStdev
+            // 
+            this.labelStdev.AutoSize = true;
+            this.labelStdev.Location = new System.Drawing.Point(216, 151);
+            this.labelStdev.Name = "labelStdev";
+            this.labelStdev.Size = new System.Drawing.Size(37, 13);
+            this.labelStdev.TabIndex = 8;
+            this.labelStdev.Text = "StDev";
+            // 
+            // labelDiff
+            // 
+            this.labelDiff.AutoSize = true;
+            this.labelDiff.Location = new System.Drawing.Point(12, 223);
+            this.labelDiff.Name = "labelDiff";
+            this.labelDiff.Size = new System.Drawing.Size(59, 13);
+            this.labelDiff.TabIndex = 1;
+            this.labelDiff.Text = "Difference:";
+            // 
+            // diffAverageText
+            // 
+            this.diffAverageText.Location = new System.Drawing.Point(113, 220);
+            this.diffAverageText.Name = "diffAverageText";
+            this.diffAverageText.ReadOnly = true;
+            this.diffAverageText.Size = new System.Drawing.Size(100, 20);
+            this.diffAverageText.TabIndex = 7;
+            // 
+            // diffStdevText
+            // 
+            this.diffStdevText.Location = new System.Drawing.Point(219, 220);
+            this.diffStdevText.Name = "diffStdevText";
+            this.diffStdevText.ReadOnly = true;
+            this.diffStdevText.Size = new System.Drawing.Size(100, 20);
+            this.diffStdevText.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 218);
+            this.ClientSize = new System.Drawing.Size(449, 266);
+            this.Controls.Add(this.labelStdev);
+            this.Controls.Add(this.labelAvg);
+            this.Controls.Add(this.baseStdevText);
+            this.Controls.Add(this.diffStdevText);
+            this.Controls.Add(this.stockfishStdevText);
+            this.Controls.Add(this.diffAverageText);
             this.Controls.Add(this.baseAverageText);
             this.Controls.Add(this.stockfishAverageText);
             this.Controls.Add(this.progressMessage);
@@ -235,6 +309,7 @@
             this.Controls.Add(this.baseBrowseButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.amountTestsLabel);
+            this.Controls.Add(this.labelDiff);
             this.Controls.Add(this.stockfishAverLabel);
             this.Controls.Add(this.stockfishLabel);
             this.Controls.Add(this.baseAverLabel);
@@ -268,6 +343,13 @@
         private System.Windows.Forms.TextBox stockfishAverageText;
         private System.Windows.Forms.TextBox baseAverageText;
         private System.Windows.Forms.Button terminateButton;
+        private System.Windows.Forms.Label labelAvg;
+        private System.Windows.Forms.TextBox stockfishStdevText;
+        private System.Windows.Forms.TextBox baseStdevText;
+        private System.Windows.Forms.Label labelStdev;
+        private System.Windows.Forms.Label labelDiff;
+        private System.Windows.Forms.TextBox diffAverageText;
+        private System.Windows.Forms.TextBox diffStdevText;
     }
 }
 

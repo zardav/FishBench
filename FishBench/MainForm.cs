@@ -106,6 +106,12 @@ namespace FishBench
             {
                 baseAverageText.SetAsync("Text", t.AverageA.ToString());
                 stockfishAverageText.SetAsync("Text", t.AverageB.ToString());
+                diffAverageText.SetAsync("Text", t.AverageDiff.ToString());
+
+                baseStdevText.SetAsync("Text", t.StdevA.ToString());
+                stockfishStdevText.SetAsync("Text", t.StdevB.ToString());
+                diffStdevText.SetAsync("Text", t.StdevDiff.ToString());
+
                 progressBar.SetAsync("Value", (int)t.PercentCompleted);
                 progressMessage.SetAsync("Text", string.Format(finishedMask, t.Completed, t.Amount));
             };
