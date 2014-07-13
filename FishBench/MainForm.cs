@@ -96,9 +96,18 @@ namespace FishBench
             saveSettings();
             t = new Tester(baseLocationText.Text, stockfishLocationText.Text);
             t.Amount = (int)amountTestNumeric.Value;
+
             baseAverageText.Text = "0";
             stockfishAverageText.Text = "0";
+            diffAverageText.Text = "0";
+
+            baseStdevText.Text = "0";
+            stockfishStdevText.Text = "0";
+            diffStdevText.Text = "0";
+
+            pvalText.Text = "0";
             progressBar.Value = 0;
+
             progressMessage.Text = string.Format(finishedMask, 0, (int)amountTestNumeric.Value * 2);
             terminateButton.Enabled = true;
             startButton.Enabled = false;
@@ -112,8 +121,15 @@ namespace FishBench
                 stockfishStdevText.SetAsync("Text", t.StdevB.ToString());
                 diffStdevText.SetAsync("Text", t.StdevDiff.ToString());
 
+                pvalText.SetAsync("Text", t.p_value.ToString());
+
                 progressBar.SetAsync("Value", (int)t.PercentCompleted);
                 progressMessage.SetAsync("Text", string.Format(finishedMask, t.Completed, t.Amount));
+            };
+            t.JobFinished += delegate
+            {
+                startButton.SetAsync("Enabled", true);
+                terminateButton.SetAsync("Enabled", false);
             };
             t.DoJob();
         }

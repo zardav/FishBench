@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MathNet.Numerics.Distributions;
 
 namespace FishBench
 {
@@ -101,6 +102,14 @@ namespace FishBench
             }
         }
 
+        public double p_value
+        {
+            get
+            {
+                return Normal.CDF(AverageDiff, StdevDiff, 0);
+            }
+        }
+
         public Tester(string pathA, string pathB)
         {
             this.pathA = pathA;
@@ -157,32 +166,27 @@ namespace FishBench
                 Process pa = new Process();
                 pa.StartInfo = infoA;
                 pa.Start();
-                string line = "";
-                while (!(line = pa.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
-                obs = decimal.Parse(line
+                Process pb = new Process();
+                pb.StartInfo = infoB;
+                pb.Start();
+
+                string lineA = "";
+                while (!(lineA = pa.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
+                obs = decimal.Parse(lineA
                     .Split(sep, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
                 sumA += obs;
                 listA.Add(obs);
                 completedA++;
-                if (TestFinished != null)
-                    TestFinished(this, EventArgs.Empty);
-                if (abortJob)
-                {
-                    jobInProgress = false;
-                    abortJob = false;
-                    return;
-                }
 
-                Process pb = new Process();
-                pb.StartInfo = infoB;
-                pb.Start();
-                line = "";
-                while (!(line = pb.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
-                obs = decimal.Parse(line
+                string lineB = "";
+                while (!(lineB = pb.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
+                obs = decimal.Parse(lineB
                     .Split(sep, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
                 sumB += obs;
                 listB.Add(obs);
                 completedB++;
+
+
                 if (TestFinished != null)
                     TestFinished(this, EventArgs.Empty);
                 if (abortJob)

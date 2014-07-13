@@ -52,6 +52,8 @@
             this.labelDiff = new System.Windows.Forms.Label();
             this.diffAverageText = new System.Windows.Forms.TextBox();
             this.diffStdevText = new System.Windows.Forms.TextBox();
+            this.pvalText = new System.Windows.Forms.TextBox();
+            this.labelPval = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,9 +181,9 @@
             this.progressMessage.AutoSize = true;
             this.progressMessage.Location = new System.Drawing.Point(113, 121);
             this.progressMessage.Name = "progressMessage";
-            this.progressMessage.Size = new System.Drawing.Size(120, 13);
+            this.progressMessage.Size = new System.Drawing.Size(69, 13);
             this.progressMessage.TabIndex = 6;
-            this.progressMessage.Text = "0 of 0 tests was finished";
+            this.progressMessage.Text = "Finished: 0/0";
             // 
             // baseAverLabel
             // 
@@ -287,14 +289,33 @@
             this.diffStdevText.Size = new System.Drawing.Size(100, 20);
             this.diffStdevText.TabIndex = 7;
             // 
+            // pvalText
+            // 
+            this.pvalText.Location = new System.Drawing.Point(277, 250);
+            this.pvalText.Name = "pvalText";
+            this.pvalText.ReadOnly = true;
+            this.pvalText.Size = new System.Drawing.Size(100, 20);
+            this.pvalText.TabIndex = 7;
+            // 
+            // labelPval
+            // 
+            this.labelPval.AutoSize = true;
+            this.labelPval.Location = new System.Drawing.Point(12, 253);
+            this.labelPval.Name = "labelPval";
+            this.labelPval.Size = new System.Drawing.Size(259, 13);
+            this.labelPval.TabIndex = 8;
+            this.labelPval.Text = "p-value (probability that Stockfish is faster than Base):";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 266);
+            this.ClientSize = new System.Drawing.Size(449, 279);
+            this.Controls.Add(this.labelPval);
             this.Controls.Add(this.labelStdev);
             this.Controls.Add(this.labelAvg);
             this.Controls.Add(this.baseStdevText);
+            this.Controls.Add(this.pvalText);
             this.Controls.Add(this.diffStdevText);
             this.Controls.Add(this.stockfishStdevText);
             this.Controls.Add(this.diffAverageText);
@@ -350,6 +371,8 @@
         private System.Windows.Forms.Label labelDiff;
         private System.Windows.Forms.TextBox diffAverageText;
         private System.Windows.Forms.TextBox diffStdevText;
+        private System.Windows.Forms.TextBox pvalText;
+        private System.Windows.Forms.Label labelPval;
     }
 }
 
