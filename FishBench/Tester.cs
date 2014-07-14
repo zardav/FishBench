@@ -166,10 +166,19 @@ namespace FishBench
             {
                 Process pa = new Process();
                 pa.StartInfo = infoA;
-                pa.Start();
                 Process pb = new Process();
                 pb.StartInfo = infoB;
-                pb.Start();
+
+                if (i % 2 == 0)
+                {
+                    pa.Start();
+                    pb.Start();
+                }
+                else
+                {
+                    pb.Start();
+                    pa.Start();
+                }
 
                 string lineA = "";
                 while (!(lineA = pa.StandardError.ReadLine()).StartsWith("Nodes/second")) ;
