@@ -23,6 +23,7 @@ namespace FishBench
         private Thread job;
 
         public int Completed { get { return completedA + completedB; } }
+        public int CompletedEach { get { return completedB; } }
 
         public double PercentCompleted
         {
@@ -71,8 +72,8 @@ namespace FishBench
             get
             {
                 long avg = AverageA;
-                return completedA == 0 ?
-                    0 : (long)Math.Sqrt( (long)listA.Select(d => (d - avg) * (d - avg)).Sum() / (long)completedA );
+                return completedA <= 1 ?
+                    0 : (long)Math.Sqrt( (long)listA.Select(d => (d - avg) * (d - avg)).Sum() / (long)(completedA - 1) );
             }
         }
 
@@ -81,8 +82,8 @@ namespace FishBench
             get
             {
                 long avg = AverageB;
-                return completedB == 0 ?
-                    0 : (long)Math.Sqrt((long)listB.Select(d => (d - avg) * (d - avg)).Sum() / (long)completedB);
+                return completedB <= 1 ?
+                    0 : (long)Math.Sqrt((long)listB.Select(d => (d - avg) * (d - avg)).Sum() / (long)(completedB - 1) );
             }
         }
 
@@ -98,7 +99,7 @@ namespace FishBench
                     cur *= cur;
                     sum += cur;
                 }
-                return len == 0 ? 0 : (long)Math.Sqrt(sum / (len * 2));
+                return len <= 1 ? 0 : (long)Math.Sqrt(sum / (len - 1));
             }
         }
 

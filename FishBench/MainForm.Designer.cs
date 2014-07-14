@@ -40,20 +40,9 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressMessage = new System.Windows.Forms.Label();
-            this.baseAverLabel = new System.Windows.Forms.Label();
-            this.stockfishAverLabel = new System.Windows.Forms.Label();
-            this.stockfishAverageText = new System.Windows.Forms.TextBox();
-            this.baseAverageText = new System.Windows.Forms.TextBox();
             this.terminateButton = new System.Windows.Forms.Button();
-            this.labelAvg = new System.Windows.Forms.Label();
-            this.stockfishStdevText = new System.Windows.Forms.TextBox();
-            this.baseStdevText = new System.Windows.Forms.TextBox();
-            this.labelStdev = new System.Windows.Forms.Label();
-            this.labelDiff = new System.Windows.Forms.Label();
-            this.diffAverageText = new System.Windows.Forms.TextBox();
-            this.diffStdevText = new System.Windows.Forms.TextBox();
-            this.pvalText = new System.Windows.Forms.TextBox();
-            this.labelPval = new System.Windows.Forms.Label();
+            this.resultsBox = new System.Windows.Forms.TextBox();
+            this.copyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.amountTestNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +50,9 @@
             // 
             this.baseLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.baseLocationText.Location = new System.Drawing.Point(113, 12);
+            this.baseLocationText.Location = new System.Drawing.Point(126, 12);
             this.baseLocationText.Name = "baseLocationText";
-            this.baseLocationText.Size = new System.Drawing.Size(290, 20);
+            this.baseLocationText.Size = new System.Drawing.Size(277, 20);
             this.baseLocationText.TabIndex = 0;
             this.baseLocationText.TextChanged += new System.EventHandler(this.locationText_TextChanged);
             // 
@@ -71,9 +60,9 @@
             // 
             this.stockfishLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.stockfishLocationText.Location = new System.Drawing.Point(113, 38);
+            this.stockfishLocationText.Location = new System.Drawing.Point(126, 38);
             this.stockfishLocationText.Name = "stockfishLocationText";
-            this.stockfishLocationText.Size = new System.Drawing.Size(290, 20);
+            this.stockfishLocationText.Size = new System.Drawing.Size(277, 20);
             this.stockfishLocationText.TabIndex = 1;
             this.stockfishLocationText.TextChanged += new System.EventHandler(this.locationText_TextChanged);
             // 
@@ -91,9 +80,9 @@
             this.stockfishLabel.AutoSize = true;
             this.stockfishLabel.Location = new System.Drawing.Point(12, 41);
             this.stockfishLabel.Name = "stockfishLabel";
-            this.stockfishLabel.Size = new System.Drawing.Size(94, 13);
+            this.stockfishLabel.Size = new System.Drawing.Size(108, 13);
             this.stockfishLabel.TabIndex = 1;
-            this.stockfishLabel.Text = "Stockfish location:";
+            this.stockfishLabel.Text = "Test version location:";
             // 
             // baseBrowseButton
             // 
@@ -185,40 +174,6 @@
             this.progressMessage.TabIndex = 6;
             this.progressMessage.Text = "Finished: 0/0";
             // 
-            // baseAverLabel
-            // 
-            this.baseAverLabel.AutoSize = true;
-            this.baseAverLabel.Location = new System.Drawing.Point(12, 173);
-            this.baseAverLabel.Name = "baseAverLabel";
-            this.baseAverLabel.Size = new System.Drawing.Size(34, 13);
-            this.baseAverLabel.TabIndex = 1;
-            this.baseAverLabel.Text = "Base:";
-            // 
-            // stockfishAverLabel
-            // 
-            this.stockfishAverLabel.AutoSize = true;
-            this.stockfishAverLabel.Location = new System.Drawing.Point(12, 199);
-            this.stockfishAverLabel.Name = "stockfishAverLabel";
-            this.stockfishAverLabel.Size = new System.Drawing.Size(54, 13);
-            this.stockfishAverLabel.TabIndex = 1;
-            this.stockfishAverLabel.Text = "Stockfish:";
-            // 
-            // stockfishAverageText
-            // 
-            this.stockfishAverageText.Location = new System.Drawing.Point(113, 196);
-            this.stockfishAverageText.Name = "stockfishAverageText";
-            this.stockfishAverageText.ReadOnly = true;
-            this.stockfishAverageText.Size = new System.Drawing.Size(100, 20);
-            this.stockfishAverageText.TabIndex = 7;
-            // 
-            // baseAverageText
-            // 
-            this.baseAverageText.Location = new System.Drawing.Point(113, 170);
-            this.baseAverageText.Name = "baseAverageText";
-            this.baseAverageText.ReadOnly = true;
-            this.baseAverageText.Size = new System.Drawing.Size(100, 20);
-            this.baseAverageText.TabIndex = 7;
-            // 
             // terminateButton
             // 
             this.terminateButton.Enabled = false;
@@ -230,97 +185,35 @@
             this.terminateButton.UseVisualStyleBackColor = true;
             this.terminateButton.Click += new System.EventHandler(this.terminateButton_Click);
             // 
-            // labelAvg
+            // resultsBox
             // 
-            this.labelAvg.AutoSize = true;
-            this.labelAvg.Location = new System.Drawing.Point(113, 151);
-            this.labelAvg.Name = "labelAvg";
-            this.labelAvg.Size = new System.Drawing.Size(53, 13);
-            this.labelAvg.TabIndex = 8;
-            this.labelAvg.Text = "Avergage";
+            this.resultsBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsBox.Location = new System.Drawing.Point(15, 150);
+            this.resultsBox.Multiline = true;
+            this.resultsBox.Name = "resultsBox";
+            this.resultsBox.Size = new System.Drawing.Size(307, 106);
+            this.resultsBox.TabIndex = 9;
+            this.resultsBox.Text = "Results for 0 tests for each version:\r\n\r\n            Base      Test      Diff    " +
+    "  \r\n    Mean    0         0         0         \r\n    StDev   0         0         " +
+    "0         \r\n\r\np-value: 0";
             // 
-            // stockfishStdevText
+            // copyButton
             // 
-            this.stockfishStdevText.Location = new System.Drawing.Point(219, 196);
-            this.stockfishStdevText.Name = "stockfishStdevText";
-            this.stockfishStdevText.ReadOnly = true;
-            this.stockfishStdevText.Size = new System.Drawing.Size(100, 20);
-            this.stockfishStdevText.TabIndex = 7;
-            // 
-            // baseStdevText
-            // 
-            this.baseStdevText.Location = new System.Drawing.Point(219, 170);
-            this.baseStdevText.Name = "baseStdevText";
-            this.baseStdevText.ReadOnly = true;
-            this.baseStdevText.Size = new System.Drawing.Size(100, 20);
-            this.baseStdevText.TabIndex = 7;
-            // 
-            // labelStdev
-            // 
-            this.labelStdev.AutoSize = true;
-            this.labelStdev.Location = new System.Drawing.Point(216, 151);
-            this.labelStdev.Name = "labelStdev";
-            this.labelStdev.Size = new System.Drawing.Size(37, 13);
-            this.labelStdev.TabIndex = 8;
-            this.labelStdev.Text = "StDev";
-            // 
-            // labelDiff
-            // 
-            this.labelDiff.AutoSize = true;
-            this.labelDiff.Location = new System.Drawing.Point(12, 223);
-            this.labelDiff.Name = "labelDiff";
-            this.labelDiff.Size = new System.Drawing.Size(59, 13);
-            this.labelDiff.TabIndex = 1;
-            this.labelDiff.Text = "Difference:";
-            // 
-            // diffAverageText
-            // 
-            this.diffAverageText.Location = new System.Drawing.Point(113, 220);
-            this.diffAverageText.Name = "diffAverageText";
-            this.diffAverageText.ReadOnly = true;
-            this.diffAverageText.Size = new System.Drawing.Size(100, 20);
-            this.diffAverageText.TabIndex = 7;
-            // 
-            // diffStdevText
-            // 
-            this.diffStdevText.Location = new System.Drawing.Point(219, 220);
-            this.diffStdevText.Name = "diffStdevText";
-            this.diffStdevText.ReadOnly = true;
-            this.diffStdevText.Size = new System.Drawing.Size(100, 20);
-            this.diffStdevText.TabIndex = 7;
-            // 
-            // pvalText
-            // 
-            this.pvalText.Location = new System.Drawing.Point(277, 250);
-            this.pvalText.Name = "pvalText";
-            this.pvalText.ReadOnly = true;
-            this.pvalText.Size = new System.Drawing.Size(100, 20);
-            this.pvalText.TabIndex = 7;
-            // 
-            // labelPval
-            // 
-            this.labelPval.AutoSize = true;
-            this.labelPval.Location = new System.Drawing.Point(12, 253);
-            this.labelPval.Name = "labelPval";
-            this.labelPval.Size = new System.Drawing.Size(259, 13);
-            this.labelPval.TabIndex = 8;
-            this.labelPval.Text = "p-value (probability that Stockfish is faster than Base):";
+            this.copyButton.Location = new System.Drawing.Point(328, 233);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(75, 23);
+            this.copyButton.TabIndex = 10;
+            this.copyButton.Text = "Copy";
+            this.copyButton.UseVisualStyleBackColor = true;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 279);
-            this.Controls.Add(this.labelPval);
-            this.Controls.Add(this.labelStdev);
-            this.Controls.Add(this.labelAvg);
-            this.Controls.Add(this.baseStdevText);
-            this.Controls.Add(this.pvalText);
-            this.Controls.Add(this.diffStdevText);
-            this.Controls.Add(this.stockfishStdevText);
-            this.Controls.Add(this.diffAverageText);
-            this.Controls.Add(this.baseAverageText);
-            this.Controls.Add(this.stockfishAverageText);
+            this.ClientSize = new System.Drawing.Size(449, 268);
+            this.Controls.Add(this.copyButton);
+            this.Controls.Add(this.resultsBox);
             this.Controls.Add(this.progressMessage);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.terminateButton);
@@ -330,10 +223,7 @@
             this.Controls.Add(this.baseBrowseButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.amountTestsLabel);
-            this.Controls.Add(this.labelDiff);
-            this.Controls.Add(this.stockfishAverLabel);
             this.Controls.Add(this.stockfishLabel);
-            this.Controls.Add(this.baseAverLabel);
             this.Controls.Add(this.baseLabel);
             this.Controls.Add(this.stockfishLocationText);
             this.Controls.Add(this.baseLocationText);
@@ -359,20 +249,9 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Label progressMessage;
-        private System.Windows.Forms.Label baseAverLabel;
-        private System.Windows.Forms.Label stockfishAverLabel;
-        private System.Windows.Forms.TextBox stockfishAverageText;
-        private System.Windows.Forms.TextBox baseAverageText;
         private System.Windows.Forms.Button terminateButton;
-        private System.Windows.Forms.Label labelAvg;
-        private System.Windows.Forms.TextBox stockfishStdevText;
-        private System.Windows.Forms.TextBox baseStdevText;
-        private System.Windows.Forms.Label labelStdev;
-        private System.Windows.Forms.Label labelDiff;
-        private System.Windows.Forms.TextBox diffAverageText;
-        private System.Windows.Forms.TextBox diffStdevText;
-        private System.Windows.Forms.TextBox pvalText;
-        private System.Windows.Forms.Label labelPval;
+        private System.Windows.Forms.TextBox resultsBox;
+        private System.Windows.Forms.Button copyButton;
     }
 }
 

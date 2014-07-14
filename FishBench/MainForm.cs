@@ -97,15 +97,7 @@ namespace FishBench
             t = new Tester(baseLocationText.Text, stockfishLocationText.Text);
             t.Amount = (int)amountTestNumeric.Value;
 
-            baseAverageText.Text = "0";
-            stockfishAverageText.Text = "0";
-            diffAverageText.Text = "0";
-
-            baseStdevText.Text = "0";
-            stockfishStdevText.Text = "0";
-            diffStdevText.Text = "0";
-
-            pvalText.Text = "0";
+            setResult(0, 0, 0, 0, 0, 0, 0, 0);
             progressBar.Value = 0;
 
             progressMessage.Text = string.Format(finishedMask, 0, (int)amountTestNumeric.Value * 2);
@@ -113,18 +105,9 @@ namespace FishBench
             startButton.Enabled = false;
             t.TestFinished += delegate
             {
-                baseAverageText.SetAsync("Text", t.AverageA.ToString());
-                stockfishAverageText.SetAsync("Text", t.AverageB.ToString());
-                diffAverageText.SetAsync("Text", t.AverageDiff.ToString());
-
-                baseStdevText.SetAsync("Text", t.StdevA.ToString());
-                stockfishStdevText.SetAsync("Text", t.StdevB.ToString());
-                diffStdevText.SetAsync("Text", t.StdevDiff.ToString());
-
-                pvalText.SetAsync("Text", t.p_value.ToString());
-
                 progressBar.SetAsync("Value", (int)t.PercentCompleted);
                 progressMessage.SetAsync("Text", string.Format(finishedMask, t.Completed, t.Amount));
+                setResult(t.AverageA, t.AverageB, t.AverageDiff, t.StdevA, t.StdevB, t.StdevDiff, t.CompletedEach, Math.Round(t.p_value, 3));
             };
             t.JobFinished += delegate
             {
@@ -152,6 +135,33 @@ namespace FishBench
                 terminateButton.Enabled = false;
                 startButton.Enabled = true;
             }
+        }
+
+        string resultLineFormat = "    {0,-8}{1,-10}{2,-10}{3,-10}\r\n";
+        private void setResult(object baseMean, object testMean, object diffMean,
+            object baseStdev, object testStdev, object diffStdev,
+            object testAmount, object pval)
+        {
+            resultsBox.SetAsync("Text",
+                "Results for " + testAmount.ToString() + " tests for each version:\r\n\r\n" +
+                string.Format(resultLineFormat, "", "Base", "Test", "Diff") +
+                string.Format(resultLineFormat, "Mean", baseMean, testMean, diffMean) +
+                string.Format(resultLineFormat, "StDev", baseStdev, testStdev, diffStdev) +
+                "\r\np-value: " + pval.ToString());
+        }
+
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(resultsBox.Text);
+            copyButton.BackColor = Color.PaleGreen;
+            Timer t = new Timer();
+            t.Tick += delegate
+            {
+                t.Stop();
+                copyButton.BackColor = SystemColors.Control;
+            };
+            t.Interval = 1000;
+            t.Start();
         }
     }
 }
