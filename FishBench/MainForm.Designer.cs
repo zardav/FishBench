@@ -187,21 +187,21 @@
             // 
             // resultsBox
             // 
-            this.resultsBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsBox.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultsBox.Location = new System.Drawing.Point(15, 150);
             this.resultsBox.Multiline = true;
             this.resultsBox.Name = "resultsBox";
-            this.resultsBox.Size = new System.Drawing.Size(307, 106);
-            this.resultsBox.TabIndex = 9;
+            this.resultsBox.Size = new System.Drawing.Size(307, 124);
+            this.resultsBox.TabIndex = 20;
             this.resultsBox.Text = "Results for 0 tests for each version:\r\n\r\n            Base      Test      Diff    " +
     "  \r\n    Mean    0         0         0         \r\n    StDev   0         0         " +
-    "0         \r\n\r\np-value: 0";
+    "0         \r\n\r\np-value: 0\r\nspeedup: 0";
             // 
             // copyButton
             // 
-            this.copyButton.Location = new System.Drawing.Point(328, 233);
+            this.copyButton.Location = new System.Drawing.Point(328, 250);
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(75, 23);
+            this.copyButton.Size = new System.Drawing.Size(89, 23);
             this.copyButton.TabIndex = 10;
             this.copyButton.Text = "Copy";
             this.copyButton.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 268);
+            this.ClientSize = new System.Drawing.Size(449, 285);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.resultsBox);
             this.Controls.Add(this.progressMessage);
@@ -250,8 +250,8 @@
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Label progressMessage;
         private System.Windows.Forms.Button terminateButton;
-        private System.Windows.Forms.TextBox resultsBox;
         private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.TextBox resultsBox;
     }
 }
 

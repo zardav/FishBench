@@ -111,6 +111,13 @@ namespace FishBench
             }
         }
 
+        public double speedup
+        {
+            get
+            {
+                return (-(double)AverageDiff) / (double)AverageA;
+            }
+        }
         public Tester(string pathA, string pathB)
         {
             this.pathA = pathA;
